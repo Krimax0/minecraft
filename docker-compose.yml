@@ -2,48 +2,50 @@ version: '3.8'
 
 services:
   minecraft:
-    build: .
-    container_name: minecraft-neoforge-1.21.1
+    image: itzg/minecraft-server:java21
+    container_name: minecraft-neoforge
     restart: unless-stopped
 
     environment:
-      # Память для сервера (настройте под ваши нужды)
-      JAVA_MEMORY: "10G"
+      EULA: "TRUE"
+      TYPE: "NEOFORGE"
+      VERSION: "1.21.1"
+      NEOFORGE_VERSION: "21.1.172"
+      MEMORY: "10G"
+
+      # Нелицензионный сервер
+      ONLINE_MODE: "FALSE"
+
+      # Настройки сервера
+      MOTD: "§6Модовый сервер NeoForge 1.21.1"
+      MAX_PLAYERS: "20"
+      DIFFICULTY: "normal"
+      ALLOW_FLIGHT: "TRUE"
+      VIEW_DISTANCE: "10"
+      SIMULATION_DISTANCE: "10"
+
+      # Оптимизация JVM
+      USE_AIKAR_FLAGS: "TRUE"
 
     ports:
-      - "25565:25565"  # Minecraft порт
+      - "25565:25565"
 
     volumes:
-      # Моды - укажите путь до вашей папки с модами
-      - ./mods:/minecraft/mods
+      # Папка с модами - просто положите моды сюда
+      - ./mods:/data/mods
 
       # Конфиги модов
-      - ./config:/minecraft/config
+      - ./config:/data/config
 
-      # Мир сервера
-      - ./world:/minecraft/world
-
-      # Настройки сервера (создастся автоматически)
-      - ./server.properties:/minecraft/server.properties
-
-      # Логи
-      - ./logs:/minecraft/logs
-
-      # Другие данные сервера
-      - ./libraries:/minecraft/libraries
-      - ./versions:/minecraft/versions
+      # Все данные сервера
+      - ./data:/data
 
     stdin_open: true
     tty: true
 
-    # Ограничения ресурсов
     deploy:
       resources:
         limits:
           memory: 6G
         reservations:
           memory: 4G
-
-networks:
-  default:
-    driver: bridge
