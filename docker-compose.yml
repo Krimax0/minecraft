@@ -23,12 +23,13 @@ services:
       ALLOW_FLIGHT: "TRUE"
       VIEW_DISTANCE: "10"
       SIMULATION_DISTANCE: "10"
+      SERVER_PORT: "25565"
 
       # Оптимизация JVM
       USE_AIKAR_FLAGS: "TRUE"
 
     ports:
-      - "2456:2456"
+      - "2456:25565"
 
     volumes:
       - ./mods:/data/mods
