@@ -3,15 +3,12 @@ version: '3.8'
 services:
   minecraft:
     build: .
-    container_name: minecraft-neoforge
+    container_name: minecraft-neoforge-1.21.1
     restart: unless-stopped
 
     environment:
-      # Память для сервера (можете изменить)
-      JAVA_MEMORY: "4G"
-
-      # Настройки сервера
-      EULA: "true"
+      # Память для сервера (настройте под ваши нужды)
+      JAVA_MEMORY: "10G"
 
     ports:
       - "25565:25565"  # Minecraft порт
@@ -23,22 +20,23 @@ services:
       # Конфиги модов
       - ./config:/minecraft/config
 
-      # Мир сервера (данные сохраняются)
+      # Мир сервера
       - ./world:/minecraft/world
 
-      # Настройки сервера
+      # Настройки сервера (создастся автоматически)
       - ./server.properties:/minecraft/server.properties
 
       # Логи
       - ./logs:/minecraft/logs
 
-      # Плагины (для дополнительных функций)
-      - ./plugins:/minecraft/plugins
+      # Другие данные сервера
+      - ./libraries:/minecraft/libraries
+      - ./versions:/minecraft/versions
 
     stdin_open: true
     tty: true
 
-    # Ограничения ресурсов (опционально)
+    # Ограничения ресурсов
     deploy:
       resources:
         limits:
