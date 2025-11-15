@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  minecraft:
+    build: .
+    container_name: minecraft-neoforge
+    restart: unless-stopped
+
+    environment:
+      # Память для сервера (можете изменить)
+      JAVA_MEMORY: "4G"
+
+      # Настройки сервера
+      EULA: "true"
+
+    ports:
+      - "25565:25565"  # Minecraft порт
+
+    volumes:
+      # Моды - укажите путь до вашей папки с модами
+      - ./mods:/minecraft/mods
+
+      # Конфиги модов
+      - ./config:/minecraft/config
+
+      # Мир сервера (данные сохраняются)
+      - ./world:/minecraft/world
+
+      # Настройки сервера
+      - ./server.properties:/minecraft/server.properties
+
+      # Логи
+      - ./logs:/minecraft/logs
+
+      # Плагины (для дополнительных функций)
+      - ./plugins:/minecraft/plugins
+
+    stdin_open: true
+    tty: true
+
+    # Ограничения ресурсов (опционально)
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+        reservations:
+          memory: 4G
+
+networks:
+  default:
+    driver: bridge
