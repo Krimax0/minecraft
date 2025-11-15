@@ -1,0 +1,20 @@
+# Папка с модами
+mods/
+
+# Файлы Minecraft
+.mixin.out/
+crash-reports/
+saves/
+screenshots/
+logs/
+resourcepacks/
+shaderpacks/
+options.txt
+optionsof.txt
+servers.dat
+usercache.json
+usernamecache.json
+
+# Системные файлы
+.DS_Store
+Thumbs.db

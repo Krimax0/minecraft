@@ -1,0 +1,31 @@
+[hive]
+	#Overclocker energy usage for every bee per tick.
+	# Default: 100
+	# Range: 0 ~ 20000
+	overclocker_energy_usage = 100
+	#Tick interval for export hatch auto output.
+	# Default: 8
+	# Range: 1 ~ 1000
+	auto_output_interval = 8
+	#Tick interval for import hatch auto input.
+	# Default: 8
+	# Range: 1 ~ 1000
+	auto_input_interval = 8
+	#The base honey output amount for every bee.
+	# Default: 300
+	# Range: 0 ~ 1000
+	honey_base = 300
+	#The base dragon breath output amount for draconic bee.
+	# Default: 400
+	# Range: 0 ~ 1000
+	dragon_breath_base = 400
+
+[centrifuge]
+	#The wax amount centrifuge gearbox needs to run.
+	# Default: 40
+	# Range: 0 ~ 200
+	gearbox_wax = 40
+	#The boost centrifuge gearbox gives.
+	# Default: 1.5
+	# Range: 1.0 ~ 2.0
+	gearbox_boost = 1.5
