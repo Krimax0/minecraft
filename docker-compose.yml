@@ -21,31 +21,17 @@ services:
       MAX_PLAYERS: "20"
       DIFFICULTY: "normal"
       ALLOW_FLIGHT: "TRUE"
-      VIEW_DISTANCE: "10"
-      SIMULATION_DISTANCE: "10"
 
-      # Оптимизация JVM
+      # Оптимизация
       USE_AIKAR_FLAGS: "TRUE"
 
     ports:
-      - "25565:25565"
+      - "2456:2456"
 
     volumes:
-      # Папка с модами - просто положите моды сюда
       - ./mods:/data/mods
-
-      # Конфиги модов
       - ./config:/data/config
-
-      # Все данные сервера
       - ./data:/data
 
     stdin_open: true
     tty: true
-
-    deploy:
-      resources:
-        limits:
-          memory: 6G
-        reservations:
-          memory: 4G
