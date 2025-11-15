@@ -10,7 +10,7 @@ services:
       EULA: "TRUE"
       TYPE: "NEOFORGE"
       VERSION: "1.21.1"
-      NEOFORGE_VERSION: "21.1.172"
+      NEOFORGE_VERSION: "21.1.215"
       MEMORY: "10G"
 
       # Нелицензионный сервер
@@ -21,8 +21,10 @@ services:
       MAX_PLAYERS: "20"
       DIFFICULTY: "normal"
       ALLOW_FLIGHT: "TRUE"
+      VIEW_DISTANCE: "10"
+      SIMULATION_DISTANCE: "10"
 
-      # Оптимизация
+      # Оптимизация JVM
       USE_AIKAR_FLAGS: "TRUE"
 
     ports:
