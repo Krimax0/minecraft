@@ -1,22 +1,16 @@
 version: '3.8'
-
 services:
   minecraft:
     image: itzg/minecraft-server:java21
     container_name: minecraft-neoforge
     restart: unless-stopped
-
     environment:
       EULA: "TRUE"
       TYPE: "NEOFORGE"
       VERSION: "1.21.1"
       NEOFORGE_VERSION: "21.1.215"
       MEMORY: "10G"
-
-      # Нелицензионный сервер
       ONLINE_MODE: "FALSE"
-
-      # Настройки сервера
       MOTD: "§6Модовый сервер NeoForge 1.21.1"
       MAX_PLAYERS: "20"
       DIFFICULTY: "normal"
@@ -24,17 +18,16 @@ services:
       VIEW_DISTANCE: "32"
       SIMULATION_DISTANCE: "12"
       SERVER_PORT: "25565"
-
-      # Оптимизация JVM
+      SPAWN_PROTECTION: "0"
       USE_AIKAR_FLAGS: "TRUE"
-
     ports:
       - "2456:25565"
-
     volumes:
       - ./mods:/data/mods
       - ./config:/data/config
-      - ./data:/data
-
+      - ./world:/data/world        # ← МИР СОХРАНЁН!
+      - ./logs:/data/logs          # ← ЛОГИ СОХРАНЕНЫ!
+      - ./plugins:/data/plugins
+      - ./data:/data               # ← Всё остальное
     stdin_open: true
     tty: true
