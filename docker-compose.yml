@@ -11,7 +11,7 @@ services:
       NEOFORGE_VERSION: "21.1.215"
       MEMORY: "10G"
       ONLINE_MODE: "FALSE"
-      MOTD: "§6Модовый сервер NeoForge 1.21.1"
+      MOTD: "§6Кузезяблики"
       MAX_PLAYERS: "20"
       DIFFICULTY: "normal"
       ALLOW_FLIGHT: "TRUE"
