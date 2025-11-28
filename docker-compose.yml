@@ -21,6 +21,7 @@ services:
       SERVER_PORT: "25565"
       SPAWN_PROTECTION: "0"
       USE_AIKAR_FLAGS: "TRUE"
+      DEBUG: "TRUE"
     ports:
       - "2456:25565"
     volumes:
