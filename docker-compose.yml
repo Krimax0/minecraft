@@ -9,7 +9,7 @@ services:
       TYPE: "NEOFORGE"
       VERSION: "1.21.1"
       # NEOFORGE_VERSION: "21.1.215"
-      NEOFORGE_INSTALLER: "/extras/neoforge-21.1.215-installer.jar"
+      NEOFORGE_INSTALLER: "/data/neoforge-installer.jar"
       MEMORY: "14G"
       ONLINE_MODE: "FALSE"
       MOTD: "§6Кузезяблики"
@@ -30,5 +30,6 @@ services:
     - ./world:/data/world        # Мир
     - ./logs:/data/logs          # Логи
     - ./plugins:/data/plugins    # Плагины (если есть)
+    - ./extras/neoforge-21.1.215-installer.jar:/data/neoforge-installer.jar:ro
     stdin_open: true
     tty: true
