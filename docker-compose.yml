@@ -21,6 +21,14 @@ services:
       SPAWN_PROTECTION: "0"
       USE_AIKAR_FLAGS: "TRUE"
       DEBUG: "TRUE"
+      HTTP_PROXY: "http://172.17.0.1:10809"
+      HTTPS_PROXY: "http://172.17.0.1:10809"
+      http_proxy: "http://172.17.0.1:10809"
+      https_proxy: "http://172.17.0.1:10809"
+      NO_PROXY: "localhost,127.0.0.1"
+      # Java proxy настройки
+      JAVA_TOOL_OPTIONS: "-Dhttp.proxyHost=172.17.0.1 -Dhttp.proxyPort=10809 -Dhttps.proxyHost=172.17.0.1 -Dhttps.proxyPort=10809"
+
     ports:
       - "2456:25565"
     volumes:
