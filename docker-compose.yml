@@ -9,7 +9,7 @@ services:
       TYPE: "NEOFORGE"
       VERSION: "1.21.1"
       NEOFORGE_VERSION: "21.1.215"
-      NEOFORGE_INSTALLER: "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.215/neoforge-21.1.215-installer.jar"
+      NEOFORGE_INSTALLER: "/extras/neoforge-21.1.215-installer.jar"
       MEMORY: "14G"
       ONLINE_MODE: "FALSE"
       MOTD: "§6Кузезяблики"
