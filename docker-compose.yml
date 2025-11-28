@@ -9,7 +9,6 @@ services:
       TYPE: "NEOFORGE"
       VERSION: "1.21.1"
       NEOFORGE_VERSION: "21.1.215"
-      NEOFORGE_INSTALLER: "file:///data/neoforge-installer.jar"
       MEMORY: "14G"
       ONLINE_MODE: "FALSE"
       MOTD: "§6Кузезяблики"
