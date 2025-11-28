@@ -4,6 +4,7 @@ services:
     image: itzg/minecraft-server:java21
     container_name: minecraft-neoforge
     restart: unless-stopped
+    network_mode: host  # Используем сеть хоста
     environment:
       EULA: "TRUE"
       TYPE: "NEOFORGE"
@@ -20,24 +21,20 @@ services:
       SERVER_PORT: "25565"
       SPAWN_PROTECTION: "0"
       USE_AIKAR_FLAGS: "TRUE"
-      DEBUG: "TRUE"
-      HTTP_PROXY: "http://172.17.0.1:10809"
-      HTTPS_PROXY: "http://172.17.0.1:10809"
-      http_proxy: "http://172.17.0.1:10809"
-      https_proxy: "http://172.17.0.1:10809"
+      # Прокси через localhost (т.к. используем host network)
+      HTTP_PROXY: "http://127.0.0.1:10809"
+      HTTPS_PROXY: "http://127.0.0.1:10809"
+      http_proxy: "http://127.0.0.1:10809"
+      https_proxy: "http://127.0.0.1:10809"
       NO_PROXY: "localhost,127.0.0.1"
-      # Java proxy настройки
-      JAVA_TOOL_OPTIONS: "-Dhttp.proxyHost=172.17.0.1 -Dhttp.proxyPort=10809 -Dhttps.proxyHost=172.17.0.1 -Dhttps.proxyPort=10809"
-
-    ports:
-      - "2456:25565"
+      # Java прокси
+      JAVA_TOOL_OPTIONS: "-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=10809 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=10809"
     volumes:
-    - ./mods:/data/mods          # Моды
-    - ./config:/data/config      # Конфиги
-    - ./kubejs:/data/kubejs      # ← KubeJS скрипты
-    - ./world:/data/world        # Мир
-    - ./logs:/data/logs          # Логи
-    - ./plugins:/data/plugins    # Плагины (если есть)
-    - ./extras/neoforge-21.1.215-installer.jar:/data/neoforge-installer.jar:ro
+      - ./mods:/data/mods
+      - ./config:/data/config
+      - ./kubejs:/data/kubejs
+      - ./world:/data/world
+      - ./logs:/data/logs
+      - ./plugins:/data/plugins
     stdin_open: true
     tty: true
